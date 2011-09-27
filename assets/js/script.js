@@ -71,7 +71,7 @@ var showFestivals = function() {
 	
 	for(var y = 0 ; y < foundFestivals.length ; y ++) {
 	
-		$festivalItem =  $('<li>'+foundFestivals[y].name+'</li>');
+		$festivalItem =  $('<li>'+foundFestivals[y].name+' <span>Play</span></li>');
 		$festivalItem.attr('data-id', foundFestivals[y].id);
 		$festivalItem.click( selectFestival );
 		$('#festivalList').append($festivalItem);

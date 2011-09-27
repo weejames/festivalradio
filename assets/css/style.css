@@ -284,6 +284,15 @@ background-color : transparent; }
 	cursor:pointer;
 }
 
+#festivalList li span {
+	display: none;
+}
+
+#festivalList li:hover span {
+	display: block;
+	float: right;
+}
+
 #upNext {
 	font-size: 1.0em;
 	font-family: 'Helvetica neue', Helvetica, Arial;
