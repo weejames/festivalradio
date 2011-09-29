@@ -89,6 +89,7 @@ var selectFestival = function() {
 	
 	$('header h1').html($(this).html() + ' Radio');
 	$(this).remove();
+	$('.welcome').remove();
 	$('.searchBox').remove();
 		
 }
