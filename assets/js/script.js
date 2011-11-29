@@ -28,10 +28,9 @@ var tracksSeen = [];
 
 $(document).ready(function() {
 
-	$.get('http://api.hostip.info/country.php?ip=' + userIP, function(content) {
-		userCountry = content;
-		if (userCountry == 'UK') userCountry = 'GB';
-	});
+	$.get('http://api.hostip.info/', function(content) {
+		userCountry = $(content).find('countryAbbrev').text();
+	}, 'xml');
 
 	$.getJSON( 'data/festivals.json', function (data) {
 		festivalData = data;
@@ -111,17 +110,12 @@ var lineupTrack = function( playNow ) {
 	
 	var selectedArtist = artists[randomnumber];
 	
-	console.log(selectedArtist);
-	
 	$.getJSON('http://ws.spotify.com/search/1/track.json?q=artist:"' + selectedArtist.name + '"', processTrack(playNow) );
-	
 }
 
 
 var processTrack = function(playNow) {
  	return function(data) {
-	
-		console.log(data);
 	
 		if (data && data.tracks.length > 0) {	
 			var nextTrack = false;
@@ -137,8 +131,6 @@ var processTrack = function(playNow) {
 	
 			trackListing.push(nextTrack);
 			tracksSeen.push(nextTrack.href);
-			
-			console.log(trackListing);
 		
 			if ( playNow ) {
 				playNext();
