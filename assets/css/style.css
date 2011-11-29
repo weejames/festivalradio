@@ -284,11 +284,11 @@ background-color : transparent; }
 	cursor:pointer;
 }
 
-#festivalList li span {
+#festivalList li span.play {
 	display: none;
 }
 
-#festivalList li:hover span {
+#festivalList li:hover span.play {
 	display: block;
 	float: right;
 }

@@ -70,7 +70,7 @@ var showFestivals = function() {
 	
 	for(var y = 0 ; y < foundFestivals.length ; y ++) {
 	
-		$festivalItem =  $('<li>'+foundFestivals[y].name+' <span>Play</span></li>');
+		$festivalItem =  $('<li><span class="festivalName">'+foundFestivals[y].name+'</span> <span class="play">Play</span></li>');
 		$festivalItem.attr('data-id', foundFestivals[y].id);
 		$festivalItem.click( selectFestival );
 		$('#festivalList').append($festivalItem);
@@ -85,8 +85,7 @@ var selectFestival = function() {
 	
 	$.getJSON( 'data/events/'+festivalId+'.json', loadArtists );
 	
-	
-	$('header h1').html($(this).html() + ' Radio');
+	$('header h1').html($(this).children('span.festivalName').html() + ' Radio');
 	$(this).remove();
 	$('.welcome').remove();
 	$('.searchBox').remove();
@@ -109,7 +108,7 @@ var lineupTrack = function( playNow ) {
 	var randomnumber = Math.floor( Math.random() * artists.length );
 	
 	var selectedArtist = artists[randomnumber];
-	
+	console.log(selectedArtist);
 	$.getJSON('http://ws.spotify.com/search/1/track.json?q=artist:"' + selectedArtist.name + '"', processTrack(playNow) );
 }
 
